@@ -4,15 +4,19 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300&display=swap" rel="stylesheet">
     <link href="index.css" rel="stylesheet">
     <title>War Game</title>
   </head>
   <body>
-    <button id="new-deck">New Deck, Please!</button>
-    <button id="draw-cards" disabled>Draw new cards</button>
-    <div id="cards">
-      <img id="first-card">
-      <img id="second-card">
+    <div class="container">
+      <button class="btn" id="new-deck">New Deck, Please!</button>
+      <div id="cards">
+        <img id="first-card">
+        <img id="second-card">
+      </div>
+      <button class="btn" id="draw-cards" disabled>Draw new cards</button>
     </div>
     <script src="index.js"></script>
   </body>
