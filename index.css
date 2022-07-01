@@ -29,3 +29,19 @@ body {
   font-weight: bold;
   border: none;
 }
+
+#first-card {
+  margin-bottom: 50px;
+}
+
+.cards {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card-slot {
+  width: calc(300px * 5 / 7);
+  height: 300px;
+  border: 1px solid black;
+}

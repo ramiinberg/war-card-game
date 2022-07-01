@@ -17,7 +17,6 @@ function handleDrawTwoCards() {
       const { cards } = data
       document.getElementById("first-card").src = cards[0].image
       document.getElementById("second-card").src = cards[1].image
-
     })
 }
 
