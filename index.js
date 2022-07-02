@@ -6,6 +6,7 @@ function handleClick() {
       .then(data => {
         deckId = data.deck_id
         document.getElementById("draw-cards").disabled = false;
+        document.getElementById("deck-remaining").textContent = 'Cards remaining: 52'
       })
 }
 
@@ -49,12 +50,13 @@ function handleDrawTwoCards() {
     .then(res => res.json())
     .then(data => {
       console.log('data', data)
-      const { cards } = data
+      const { cards, remaining } = data
       const [ card1, card2 ] = cards
       document.getElementById("first-card").src = card1.image
       document.getElementById("second-card").src = card2.image
       const winnerText = compareCards(card1.value, card2.value)
       document.getElementById("winner-text").textContent = winnerText
+      document.getElementById("deck-remaining").textContent = `Cards remaining: ${remaining}`
     })
 }
 
