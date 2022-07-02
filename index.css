@@ -36,6 +36,18 @@ body {
   margin-bottom: 50px;
 }
 
+.draw-cards-disabled {
+  background-color: grey;
+  color: mintcream;
+  cursor: not-allowed;
+}
+
+.draw-cards-enabled {
+  background-color: mintcream;
+  color: black;
+  cursor: pointer;
+}
+
 .cards {
   display: flex;
   flex-direction: column;

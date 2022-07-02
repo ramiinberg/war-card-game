@@ -1,11 +1,14 @@
 let deckId
+const drawCardsEl = document.getElementById("draw-cards")
 
 function handleClick() {
   fetch("https://apis.scrimba.com/deckofcards/api/deck/new/shuffle/")
       .then(res => res.json())
       .then(data => {
         deckId = data.deck_id
-        document.getElementById("draw-cards").disabled = false;
+        drawCardsEl.disabled = false;
+        drawCardsEl.classList.add('draw-cards-enabled')
+        drawCardsEl.classList.remove('draw-cards-disabled')
         document.getElementById("deck-remaining").textContent = 'Cards remaining: 52'
       })
 }
@@ -57,6 +60,11 @@ function handleDrawTwoCards() {
       const winnerText = compareCards(card1.value, card2.value)
       document.getElementById("winner-text").textContent = winnerText
       document.getElementById("deck-remaining").textContent = `Cards remaining: ${remaining}`
+      if(remaining === 0) {
+        drawCardsEl.classList.add('draw-cards-disabled')
+        drawCardsEl.classList.remove('draw-cards-enabled')
+        drawCardsEl.disabled = true;
+      }
     })
 }
 
