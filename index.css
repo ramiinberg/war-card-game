@@ -30,6 +30,11 @@ body {
   border: none;
 }
 
+#winner-text {
+  text-align: center;
+  color: mintcream;
+}
+
 #first-card {
   margin-bottom: 50px;
 }

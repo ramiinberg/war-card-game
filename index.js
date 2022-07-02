@@ -34,13 +34,13 @@ function compareCards(card1, card2) {
   cardNumberValue2 = getRealValue(card2)
 
   if(cardNumberValue1 > cardNumberValue2){
-    console.log('player1 wins')
+    return 'Computer wins!'
   }
   else if(cardNumberValue2 > cardNumberValue1) {
-    console.log('player2 wins')
+    return 'Player wins!'
   }
   else {
-    console.log('tie')
+    return 'War!'
   }
 }
 
@@ -53,7 +53,8 @@ function handleDrawTwoCards() {
       const [ card1, card2 ] = cards
       document.getElementById("first-card").src = card1.image
       document.getElementById("second-card").src = card2.image
-      compareCards(card1.value, card2.value)
+      const winnerText = compareCards(card1.value, card2.value)
+      document.getElementById("winner-text").textContent = winnerText
     })
 }
 
