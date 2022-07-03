@@ -1,4 +1,6 @@
 let deckId
+let computerPoints = 0
+let playerPoints = 0
 const drawCardsEl = document.getElementById("draw-cards")
 
 function handleClick() {
@@ -38,9 +40,11 @@ function compareCards(card1, card2) {
   cardNumberValue2 = getRealValue(card2)
 
   if(cardNumberValue1 > cardNumberValue2){
+    computerPoints++
     return 'Computer wins!'
   }
   else if(cardNumberValue2 > cardNumberValue1) {
+    playerPoints++
     return 'Player wins!'
   }
   else {
@@ -60,6 +64,8 @@ function handleDrawTwoCards() {
       const winnerText = compareCards(card1.value, card2.value)
       document.getElementById("winner-text").textContent = winnerText
       document.getElementById("deck-remaining").textContent = `Cards remaining: ${remaining}`
+      document.getElementById("comp-pts").textContent = computerPoints
+      document.getElementById("player-pts").textContent = playerPoints
       if(remaining === 0) {
         drawCardsEl.classList.add('draw-cards-disabled')
         drawCardsEl.classList.remove('draw-cards-enabled')
