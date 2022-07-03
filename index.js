@@ -2,6 +2,7 @@ let deckId
 let computerPoints = 0
 let playerPoints = 0
 const drawCardsEl = document.getElementById("draw-cards")
+const winnerTextEl = document.getElementById("winner-text")
 
 function handleClick() {
   fetch("https://apis.scrimba.com/deckofcards/api/deck/new/shuffle/")
@@ -52,6 +53,16 @@ function compareCards(card1, card2) {
   }
 }
 
+function calculateWinner() {
+  if(computerPoints > playerPoints) {
+    return "The computer won the game!"
+  }
+  else if(playerPoints > computerPoints) {
+    return "You won the game"
+  }
+  return "The game was a tie"
+}
+
 function handleDrawTwoCards() {
   fetch(`https://apis.scrimba.com/deckofcards/api/deck/${deckId}/draw/?count=2`)
     .then(res => res.json())
@@ -61,8 +72,8 @@ function handleDrawTwoCards() {
       const [ card1, card2 ] = cards
       document.getElementById("first-card").src = card1.image
       document.getElementById("second-card").src = card2.image
-      const winnerText = compareCards(card1.value, card2.value)
-      document.getElementById("winner-text").textContent = winnerText
+      let winnerText = compareCards(card1.value, card2.value)
+      winnerTextEl.textContent = winnerText
       document.getElementById("deck-remaining").textContent = `Cards remaining: ${remaining}`
       document.getElementById("comp-pts").textContent = computerPoints
       document.getElementById("player-pts").textContent = playerPoints
@@ -70,6 +81,7 @@ function handleDrawTwoCards() {
         drawCardsEl.classList.add('draw-cards-disabled')
         drawCardsEl.classList.remove('draw-cards-enabled')
         drawCardsEl.disabled = true;
+        winnerTextEl.textContent = calculateWinner()
       }
     })
 }
